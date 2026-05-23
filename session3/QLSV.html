@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản Lý Sinh Viên</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Quản Lý Sinh Viên</h1>
+
+  <!-- Thống kê -->
+  <div class="stats">
+    <div class="stat">Tổng sinh viên <span id="statTotal">0</span></div>
+    <div class="stat">Điểm TB lớp <span id="statAvg">—</span></div>
+    <div class="stat">Sinh viên giỏi (≥8.0) <span id="statGood">0</span></div>
+  </div>
+
+  <!-- Thông báo -->
+  <div id="notification"></div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <button class="btn-primary" id="btnOpenForm">+ Thêm sinh viên</button>
+    <input type="text" id="searchInput" placeholder="Tìm theo tên, mã SV, lớp...">
+  </div>
+
+  <!-- Bảng dữ liệu -->
+  <table>
+    <thead>
+      <tr>
+        <th>Mã SV</th>
+        <th>Họ và tên</th>
+        <th>Ngày sinh</th>
+        <th>Lớp</th>
+        <th>Email</th>
+        <th>Điểm TB</th>
+        <th>Thao tác</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+
+  <!-- Modal form thêm/sửa -->
+  <div class="overlay" id="formOverlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modalTitle">Thêm sinh viên</h2>
+        <button class="btn-close" id="btnCloseForm">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="form-group" id="fg-maSV">
+            <label>Mã sinh viên</label>
+            <input type="text" id="maSV" placeholder="VD: SV001">
+            <span class="field-error">Vui lòng nhập mã sinh viên</span>
+          </div>
+          <div class="form-group" id="fg-hoTen">
+            <label>Họ và tên</label>
+            <input type="text" id="hoTen" placeholder="Nguyễn Văn A">
+            <span class="field-error">Vui lòng nhập họ tên</span>
+          </div>
+          <div class="form-group" id="fg-ngaySinh">
+            <label>Ngày sinh</label>
+            <input type="date" id="ngaySinh">
+            <span class="field-error">Vui lòng chọn ngày sinh</span>
+          </div>
+          <div class="form-group" id="fg-lopHoc">
+            <label>Lớp học</label>
+            <input type="text" id="lopHoc" placeholder="CNTT01">
+            <span class="field-error">Vui lòng nhập lớp</span>
+          </div>
+          <div class="form-group full" id="fg-email">
+            <label>Email</label>
+            <input type="email" id="email" placeholder="sv@email.com">
+            <span class="field-error">Email không hợp lệ</span>
+          </div>
+          <div class="form-group" id="fg-diemTB">
+            <label>Điểm trung bình</label>
+            <input type="number" id="diemTB" placeholder="0 – 10" min="0" max="10" step="0.1">
+            <span class="field-error">Điểm từ 0 đến 10</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" id="btnCancelForm">Hủy</button>
+        <button class="btn-primary" id="btnSaveForm">Lưu</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal xác nhận xóa -->
+  <div class="overlay" id="confirmOverlay">
+    <div class="modal confirm-modal">
+      <div class="confirm-body">
+        <b>Xác nhận xóa</b>
+        <p>Bạn có chắc muốn xóa sinh viên <strong id="confirmName"></strong>?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" id="btnCancelDelete">Hủy</button>
+        <button class="btn-confirm-del" id="btnConfirmDelete">Xóa</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

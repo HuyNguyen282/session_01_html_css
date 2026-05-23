@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý đồ án</title>
+    <link href = "css/custom-theme.css" rel = "stylesheet">
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="left-nav">
+            <span>Quản lý đồ án</span>
+            <a class="nav-link">Trang chủ</a>
+            <a class="nav-link">Đồ án</a>
+            <a class="nav-link">Thống kê</a>
+        </div>
+        <div class="right-nav">
+            EN | VI
+        </div>
+    </nav>
+    <main class="main">
+        <div class="hero">
+            <h1>Chào mừng đến với Đồ án tốt nghiệp</h1>
+        </div>
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-label">Tổng số Đồ án</div>
+                <div class="stat-value" id="totalValue">228</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Hoàn thành</div>
+                <div class="stat-value" id="totalValue">213</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Đang làm</div>
+                <div class="stat-value" id="totalValue">15</div>
+            </div>
+        </div>
+        <div class="toolbar">
+            <div class="search-bar">
+                <input type="text" id="seachInput" placeholder="Filter by student or title...">
+                <button class="btn">Lọc</button>
+            </div>
+            <button class="btn-add">Thêm đồ án</button>
+        </div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Tiêu đề</th>
+                        <th>Sinh Viên</th>
+                        <th>Email</th>
+                        <th>Điện thoại</th>
+                        <th>Giảng viên HD</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Ai</td>
+                        <td>Nguyễn Văn A</td>
+                        <td>A@gmail.com</td>
+                        <td>099999999</td>
+                        <td>Khabib</td>
+                        <td>
+                            <div class="actions"><button class="fix">Sửa</button> <button class="del">Xoá</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td>2</td>
+                        <td>Data</td>
+                        <td>Ronaldo</td>
+                        <td>A@gmail.com</td>
+                        <td>099999999</td>
+                        <td>Messi</td>
+                        <td>
+                            <div class="actions"><button class="fix">Sửa</button> <button class="del">Xoá</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td>3</td>
+                        <td>Mobile</td>
+                        <td>Naruto</td>
+                        <td>A@gmail.com</td>
+                        <td>099949999</td>
+                        <td>Jiraiya</td>
+                        <td>
+                            <div class="actions"><button class="fix">Sửa</button> <button class="del">Xoá</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td>4</td>
+                        <td>Web</td>
+                        <td>Châu La</td>
+                        <td>A@gmail.com</td>
+                        <td>099999999</td>
+                        <td>NVY</td>
+                        <td>
+                            <div class="actions"><button class="fix">Sửa</button> <button class="del">Xoá</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+</body>
+
+</html>

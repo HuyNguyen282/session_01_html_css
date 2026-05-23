@@ -1,0 +1,332 @@
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f5f4f0;
+  --surface: #ffffff;
+  --border: #e4e2da;
+  --text: #1a1916;
+  --text-muted: #7a7870;
+  --accent: #2d6a4f;
+  --accent-light: #e8f5ee;
+  --danger: #c0392b;
+  --danger-light: #fdecea;
+  --warning: #d4860a;
+  --warning-light: #fef6e4;
+  --done-color: #6ba08a;
+  --radius: 10px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.07);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --font: 'Be Vietnam Pro', sans-serif;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ===== HEADER ===== */
+.header {
+  background: var(--surface);
+  border-bottom: 1.5px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.header-inner {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-icon { font-size: 1.3rem; color: var(--accent); }
+.logo h1 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.5px; }
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-family: var(--font);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.15s, transform 0.1s;
+}
+.btn-primary:hover { background: #245a42; }
+.btn-primary:active { transform: scale(0.97); }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1.5px solid var(--border);
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-family: var(--font);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.btn-secondary:hover { border-color: #aaa; color: var(--text); }
+
+/* ===== STATS ===== */
+.stats-bar {
+  max-width: 820px;
+  margin: 20px auto 0;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+}
+.stat-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 0;
+  gap: 2px;
+}
+.stat-divider { width: 1px; height: 36px; background: var(--border); }
+.stat-number {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text);
+}
+.stat-number.done { color: var(--accent); }
+.stat-number.pending { color: var(--warning); }
+.stat-label { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; }
+
+/* ===== MAIN ===== */
+.main {
+  max-width: 820px;
+  margin: 20px auto 40px;
+  padding: 0 24px;
+}
+
+/* ===== TASK LIST ===== */
+.task-list { display: flex; flex-direction: column; gap: 10px; }
+
+/* ===== TASK CARD ===== */
+.task-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: start;
+  transition: box-shadow 0.15s, border-color 0.15s;
+  animation: fadeIn 0.2s ease;
+}
+.task-card:hover { box-shadow: var(--shadow); border-color: #ccc; }
+
+/* Checkbox */
+.task-card input[type="checkbox"] {
+  margin-top: 3px;
+  width: 17px;
+  height: 17px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Nội dung */
+.task-body { min-width: 0; }
+.task-header { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
+.task-title {
+  font-size: 0.97rem;
+  font-weight: 600;
+  word-break: break-word;
+}
+.task-desc {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+.task-meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+
+/* Badge ưu tiên */
+.badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+.badge-high { background: var(--danger-light); color: var(--danger); }
+.badge-medium { background: var(--warning-light); color: var(--warning); }
+.badge-low { background: var(--accent-light); color: var(--accent); }
+
+/* Hạn hoàn thành */
+.due-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+.due-date.overdue { color: var(--danger); font-weight: 600; }
+
+/* Trạng thái done */
+.task-card.done .task-title { text-decoration: line-through; color: var(--text-muted); }
+.task-card.done { background: #fafaf8; border-color: #e0ded6; }
+.task-card.done .task-desc { opacity: 0.6; }
+
+/* Nút thao tác */
+.task-actions { display: flex; gap: 6px; flex-shrink: 0; }
+.btn-icon {
+  background: transparent;
+  border: 1.5px solid var(--border);
+  border-radius: 7px;
+  padding: 5px 9px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  font-family: var(--font);
+  font-weight: 500;
+  transition: background 0.12s, border-color 0.12s;
+}
+.btn-edit { color: #2563eb; }
+.btn-edit:hover { background: #eff6ff; border-color: #93c5fd; }
+.btn-delete { color: var(--danger); }
+.btn-delete:hover { background: var(--danger-light); border-color: #f5a5a0; }
+
+/* ===== EMPTY STATE ===== */
+.empty-state {
+  text-align: center;
+  padding: 60px 24px;
+  color: var(--text-muted);
+}
+.empty-icon { font-size: 2.5rem; margin-bottom: 12px; }
+.empty-state p { font-size: 1rem; font-weight: 500; margin-bottom: 4px; }
+.empty-state span { font-size: 0.85rem; }
+
+/* ===== OVERLAY & POPUP ===== */
+.overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 20;
+  animation: fadeIn 0.15s;
+}
+.popup {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--surface);
+  border-radius: 14px;
+  width: min(480px, 94vw);
+  box-shadow: var(--shadow-lg);
+  z-index: 30;
+  animation: slideUp 0.2s ease;
+  padding: 24px;
+}
+.popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.popup-header h2 { font-size: 1.1rem; font-weight: 700; }
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.12s;
+}
+.btn-close:hover { background: var(--bg); color: var(--text); }
+
+/* Form */
+.form-group { margin-bottom: 14px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--text);
+}
+.required { color: var(--danger); }
+input[type="text"], input[type="date"], textarea, select {
+  width: 100%;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 11px;
+  font-family: var(--font);
+  font-size: 0.88rem;
+  background: var(--bg);
+  color: var(--text);
+  transition: border-color 0.15s;
+  outline: none;
+}
+input:focus, textarea:focus, select:focus { border-color: var(--accent); background: #fff; }
+textarea { resize: vertical; }
+.error-msg { font-size: 0.76rem; color: var(--danger); margin-top: 3px; display: block; min-height: 16px; }
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.low{
+    color:green;
+}
+.medium{
+    color:yellow;
+
+}
+.high{
+    color:red;
+    
+}
+
+/* ===== TOAST ===== */
+.toast {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  background: var(--text);
+  color: #fff;
+  padding: 11px 18px;
+  border-radius: 9px;
+  font-size: 0.87rem;
+  font-weight: 500;
+  z-index: 50;
+  box-shadow: var(--shadow-lg);
+  animation: slideUp 0.2s ease;
+  max-width: 280px;
+}
+.toast.success { background: var(--accent); }
+.toast.error { background: var(--danger); }
+
+/* ===== HELPERS ===== */
+.hidden { display: none !important; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translate(-50%, -46%); } to { opacity: 1; transform: translate(-50%, -50%); } }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 520px) {
+  .form-row { grid-template-columns: 1fr; }
+  .header-inner { padding: 12px 16px; }
+  .main, .stats-bar { padding: 0 16px; margin-left: 0; margin-right: 0; }
+  .task-actions { flex-direction: column; gap: 4px; }
+}
